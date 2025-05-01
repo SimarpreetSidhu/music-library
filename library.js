@@ -38,7 +38,7 @@ const printPlaylists = function() {
     console.log(`${playlist}: ${playlistName} - ${playListTracksLength} tracks`);
   }
 };
-// printPlaylists();
+printPlaylists();
 
 
 // prints a list of all tracks, using the following format:
@@ -55,7 +55,7 @@ const printTracks = function() {
   }
 };
 
-// printTracks();
+printTracks();
 
 
 // prints a list of tracks for a given playlist, using the following format:
@@ -83,7 +83,7 @@ const printPlaylist = function(playlistId) {
     }
   }
 };
-// printPlaylist(`p01`);
+printPlaylist(`p01`);
 
 
 // adds an existing track to an existing playlist
@@ -93,7 +93,7 @@ const addTrackToPlaylist = function(trackId,playlistId) {
   for (let playlist in playlists) {
     let playListTracks = playlists[playlist]["tracks"];
     if (playlist === playlistId) {
-      playListTracks.push(trackId); 
+      playListTracks.push(trackId);
     }
   }
 };
@@ -104,26 +104,42 @@ addTrackToPlaylist("t03","p01");
 // (already implemented: use this for addTrack and addPlaylist)
 const generateUid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
+};
 
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
+  let trackId = generateUid();
+  library.tracks = { [trackId]: { id: `${trackId}`,
+    name: name,
+    artist: artist,
+    album: album }
+  };
+};
 
-}
+addTrack(`Five hundred`,`Simar`,`Rockstar`);
+console.log(library);
 
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
 
-}
+  let playlistId = generateUid();
+  library.tracks = {
+    [playlistId]: { id: `${playlistId}`, name: name, tracks: [] }
+  
+  };
+
+};
+addPlaylist(`Random`);
+console.log(library);
 
 
 // STRETCH:
 // given a query string string, prints a list of tracks
 // where the name, artist or album contains the query string (case insensitive)
-// tip: use "string".search("tri") 
+// tip: use "string".search("tri")
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 const printSearchResults = function(query) {
 
-}
+};
