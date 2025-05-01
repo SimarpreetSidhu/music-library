@@ -38,7 +38,7 @@ const printPlaylists = function() {
     console.log(`${playlist}: ${playlistName} - ${playListTracksLength} tracks`);
   }
 };
-printPlaylists();
+// printPlaylists();
 
 
 // prints a list of all tracks, using the following format:
@@ -55,7 +55,7 @@ const printTracks = function() {
   }
 };
 
-printTracks();
+// printTracks();
 
 
 // prints a list of tracks for a given playlist, using the following format:
@@ -83,13 +83,21 @@ const printPlaylist = function(playlistId) {
     }
   }
 };
-printPlaylist(`p01`);
+// printPlaylist(`p01`);
 
 
 // adds an existing track to an existing playlist
-const addTrackToPlaylist = function(trackId, playlistId) {
+const addTrackToPlaylist = function(trackId,playlistId) {
+  let playlists = library.playlists;
 
-}
+  for (let playlist in playlists) {
+    let playListTracks = playlists[playlist]["tracks"];
+    if (playlist === playlistId) {
+      playListTracks.push(trackId); 
+    }
+  }
+};
+addTrackToPlaylist("t03","p01");
 
 
 // generates a unique id
